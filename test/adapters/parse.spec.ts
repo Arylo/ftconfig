@@ -1,6 +1,6 @@
-import * as config from "../lib";
-import test from "./ava";
-import { copyFileMacro } from "./common/macros";
+import * as config from "../../lib";
+import test from "../ava";
+import { copyFileMacro } from "../common/macros";
 
 let filepath: string;
 test.beforeEach(async () => {

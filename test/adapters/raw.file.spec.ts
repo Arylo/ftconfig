@@ -1,7 +1,7 @@
-import * as config from "../lib";
-import test from "./ava";
-import { copyFileMacro } from "./common/macros";
-import { createNewFilepath } from "./common/utils";
+import * as config from "../../lib";
+import test from "../ava";
+import { copyFileMacro } from "../common/macros";
+import { createNewFilepath } from "../common/utils";
 
 test.beforeEach(async (t) => {
     t.context.FILENAME = "raw.file";

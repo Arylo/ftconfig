@@ -47,3 +47,5 @@ export const readFile = <T = any>(p: fs.PathLike, options?: IReadFileOptions) =>
     const data = fs.readFileSync(options.path, { encoding: options.encoding });
     return read<T>(data, options);
 };
+
+export default { read, readFile };

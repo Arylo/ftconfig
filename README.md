@@ -20,8 +20,8 @@ npm install ftconfig
 ```
 
 ```typescript
-const ftconfig = require("ftconfig");
-const config = ftconfig.loadFile("./package.json")
+import ftconfig = require("ftconfig");
+const config = ftconfig.readFile("./package.json")
   .modify((obj) => {
     config.name = "simple";
     return obj
