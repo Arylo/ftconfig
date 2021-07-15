@@ -5,30 +5,30 @@ import { getAdapter, getMatchAdapter } from "./adapters";
 import { IReadFileOptions, IReadOptions } from "./options.d";
 import { WriteConfig } from "./WriteConfig";
 
-export const read = <T = any>(data: string, options: string | IReadOptions) => {
-    if (typeof options === "string") {
+export const read = <T = any>(data: string, encodingOrOptions: string | IReadOptions) => {
+    let options: IReadOptions;
+    if (typeof encodingOrOptions === "string") {
         options = {
-            type: options
+            type: encodingOrOptions
         };
+    } else {
+        options = encodingOrOptions;
     }
-    let adapter: IAdapter = getAdapter(options.type);
+    let adapter = getAdapter(options.type);
     if (!adapter) {
         options.type = "raw";
-        adapter = getAdapter(options.type);
+        adapter = getAdapter(options.type) as IAdapter;
     }
     const obj: T = adapter.parse(data);
     return new WriteConfig(obj, options);
 };
 
-export const readFile = <T = any>(p: fs.PathLike, options?: IReadFileOptions) => {
+export const readFile = <T = any>(p: fs.PathLike, options: IReadFileOptions = { type: "raw" }) => {
     if (!fs.existsSync(p)) {
         throw new Error(p.toString());
     }
     if (!fs.statSync(p).isFile()) {
         throw new Error(p.toString());
-    }
-    if (!options) {
-        options = {} as any;
     }
     if (!options.type) {
         options.type = "raw";

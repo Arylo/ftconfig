@@ -13,7 +13,7 @@ export class WriteConfig<T> {
     constructor(obj: T, options: IWriteOptions) {
         this.obj = obj;
         this.options = options;
-        this.adapter = getAdapter(this.options.type);
+        this.adapter = getAdapter(this.options.type) as IAdapter;
     }
 
     public modify(fn: (obj: T) => T) {
@@ -46,7 +46,7 @@ export class WriteConfig<T> {
         return this;
     }
 
-    public toString(options?) {
+    public toString(options?: any) {
         return this.adapter.stringify(this.obj, options);
     }
 
