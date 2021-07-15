@@ -23,19 +23,20 @@ export const read = <T = any>(data: string, encodingOrOptions: string | IReadOpt
     return new WriteConfig(obj, options);
 };
 
-export const readFile = <T = any>(p: fs.PathLike, options: IReadFileOptions = { type: "raw" }) => {
+export const readFile = <T = any>(p: fs.PathLike, options: IReadFileOptions = { type: "auto" }) => {
     if (!fs.existsSync(p)) {
         throw new Error(p.toString());
     }
     if (!fs.statSync(p).isFile()) {
         throw new Error(p.toString());
     }
-    if (!options.type) {
-        options.type = "raw";
+    if (options.type === "auto") {
         const filename = path.basename(p.toString());
         const adapter = getMatchAdapter(filename);
         if (adapter) {
             options.type = adapter.key;
+        } else {
+            options.type = "raw";
         }
     }
     if (!options.path) {
