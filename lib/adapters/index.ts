@@ -1,6 +1,6 @@
 import { readdirSync } from "fs";
 import { resolve } from "path";
-import { IAdapter } from "../adapter.d";
+import { IAdapter } from "../../types/adapter";
 
 export const adapters: IAdapter[] = readdirSync(__dirname)
     .filter((filename) => "index.js" !== filename)

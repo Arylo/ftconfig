@@ -1,8 +1,8 @@
 import * as fs from "fs";
 import * as path from "path";
-import { IAdapter } from "./adapter.d";
+import { IAdapter } from "../types/adapter";
+import { IReadFileOptions, IReadOptions } from "../types/options";
 import { getAdapter, getMatchAdapter } from "./adapters";
-import { IReadFileOptions, IReadOptions } from "./options.d";
 import { WriteConfig } from "./WriteConfig";
 
 export const read = <T = any>(data: string, encodingOrOptions: string | IReadOptions) => {

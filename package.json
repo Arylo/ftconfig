@@ -3,9 +3,9 @@
   "version": "1.1.5",
   "description": "F*ck the config",
   "main": "dist/index.js",
-  "types": "lib/index.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rimraf dist/*",
     "tsc": "tsc --locale zh-cn --pretty",
     "build": "npm run tsc -- -P tsconfig.json",
     "build:prod": "npm run tsc -- -P tsconfig.prod.json",
@@ -36,7 +36,8 @@
   },
   "files": [
     "dist",
-    "lib"
+    "lib",
+    "types"
   ],
   "author": "AryloYeung <arylo.open@gmail.com>",
   "repository": {

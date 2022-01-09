@@ -1,9 +1,9 @@
 import * as fs from "fs";
 import makeDir = require("make-dir");
 import * as path from "path";
-import { IAdapter } from "./adapter.d";
+import { IAdapter } from "../types/adapter";
+import { IWriteOptions } from "../types/options.d";
 import { getAdapter } from "./adapters";
-import { IWriteOptions } from "./options.d";
 
 export class WriteConfig<T> {
     private obj: T;
